@@ -1,4 +1,4 @@
-# [swagger-codegen-cli.docker](https://github.com/jimschubert/swagger-codegen-cli.docker)
+# [swagger-codegen-cli.docker](https://github.com/centular/swagger-codegen-cli.docker)
 
 Dockerfile for running Swagger Codegen.
 
@@ -23,7 +23,7 @@ The default is `help`.
 All options for the CLI are supported.
 
 ```
-docker run -it jimschubert/swagger-codegen-cli config-help -l csharp
+docker run -it centular/swagger-codegen-cli config-help -l csharp
 ```
 
 For full options details, see the [Swagger Codegen README](https://github.com/swagger-api/swagger-codegen).
@@ -36,7 +36,7 @@ Example:
 
 ```
 docker run -it -v ~/temp/swagger-generated:/swagger-api/out \
-    jimschubert/swagger-codegen-cli generate \
+    centular/swagger-codegen-cli generate \
     -i /swagger-api/yaml/petstore-with-fake-endpoints-models-for-testing.yaml \
     -l csharp \
     -o /swagger-api/out/cs
@@ -50,11 +50,11 @@ To read in a swagger definition from a local file, just map a volume to `/swagge
 Example:
 
 ```
-docker run -it -v ~/temp/swagger-generated:/swagger-api/out \
-    -v ~/temp/swagger-definitions:/swagger-api/yaml \
-    jimschubert/swagger-codegen-cli generate \
-    -i /swagger-api/yaml/twitter.yaml \
-    -l csharp \
-    -o /swagger-api/out/twitter
+docker run -it -v $(PWD):/swagger-api/out \
+    -v $(PWD):/swagger-api/yaml \
+    centular/swagger-codegen-cli generate \
+    -i /swagger-api/yaml/swagger.yaml \
+    -l swagger \
+    -o /swagger-api/out/swagger.json
 ```
 Your generated code will now be accessible under `~/temp/swagger-generated/twitter`.
